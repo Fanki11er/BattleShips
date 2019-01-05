@@ -24,7 +24,7 @@ describe("When i click on my game board ",function()
 
        obj.target.id = "00";
        battle.kontroler.isNew(obj);
-       expect(battle.kontroler.shots).toBe(3);
+       expect(battle.kontroler.shots).toBe(2);
 
    }) 
 
