@@ -1,0 +1,93 @@
+body
+{
+	margin: 0;
+	background-color: black;
+	
+}
+#container
+{
+	width: 1138px;
+	height: 620px;
+	background-color: #333;
+	margin: auto;
+	text-align: center;
+}
+#logo
+{
+	height: 100px;
+	background-color:  #444;
+	width: 1138px;
+}
+#shipsLeft
+{
+	width: 470px;
+	height: 628px;
+	background-color: #555;
+	float: left;
+	padding-right: 20px;
+	padding-left: 20px;
+	
+}
+.largeShip
+{
+	float: left;
+	width:200px;
+	height: 80px;
+	background-color: orange;
+	margin: 10px 15px 10px 15px;
+}
+.mediumShip
+{	
+float: left;
+	width:200px;
+	height: 80px;
+	background-color: green;
+	margin: 10px 15px 10px 15px;
+}
+.smallShip
+{
+	float: left;
+	width:200px;
+	height: 80px;
+	background-color: blue;
+	margin: 10px 15px 10px 15px;
+}
+.boat
+{
+	float: left;
+	width:200px;
+	height: 80px;
+	background-color: red;
+	margin: 10px 15px 10px 15px;
+}
+#board
+{
+	width: 620px;
+	height: 620px;	
+	float: left;	
+	background-image: url("../Img/Water.jpg");
+	border: 2px solid orange;
+	padding: 2px;
+}
+
+td
+{
+	height: 60px;
+	width: 60px;
+}
+table
+{
+	border-collapse: collapse;
+}
+
+td:hover
+{
+	background-image: url("../Img/Fire.png");
+}
+#footer
+{
+	clear: both;
+	width: 1138px;
+	height: 30px;
+	background-color: #777;
+}
