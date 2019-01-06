@@ -48,7 +48,7 @@ describe("Shot", function()
 {
     var cell = { id:{},style:{} };
     var shipPosition;
-    var hit;
+
 
     
     beforeEach(function()
@@ -60,8 +60,6 @@ describe("Shot", function()
     afterEach(function()
     {
         battle.model.ships = [];
-    
-        //battle.model.ships[0].hits = 0;
     })
     it("is a HIT and cell change its colour to orange", function()
     {
@@ -80,20 +78,15 @@ describe("Shot", function()
 
     it("is 2 times HIT and ship is sunk", function()
     {
-        var document =
-        {
-            getElementById: function(a)
-            {
-                return 10;
-            }
-        }
-        // Zrobić obiekt document z metodą get elementByid z returnem oczekiwanej komórki
-        for(var i=0; i<2;i++)
-        {
-            shipPosition =  battle.model.ships[4].position[i];
+        //Wrong falses onece upon a time i dont know why
+    
+        
+            shipPosition =  battle.model.ships[4].position[0];
             cell.id = shipPosition;
             battle.model.fire(cell);
-        }
+            shipPosition =  battle.model.ships[4].position[1];
+            cell.id = shipPosition;
+            battle.model.fire(cell);
         expect(battle.model.ships[4].isSunk).toEqual(true); 
     })
 })
