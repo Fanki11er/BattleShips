@@ -1,5 +1,5 @@
 
-//window.onload = init;
+window.onload = init;
 function init()
 {
 		var board = document.getElementsByTagName("td");
@@ -29,8 +29,10 @@ function init()
 					if(ship.hits==ship.size)
 					{
 						console.log("Zatopiony");
-						var pic = document.getElementById(ship.picture);
-						pic.style.backgroundColor = "gray";
+						this.changePicture(ship.picture);
+						//var pic = document.getElementById(ship.picture);
+						//pic.style.backgroundColor = "gray";
+						ship.isSunk = true;
 					}
 					break;
 				}
@@ -88,7 +90,18 @@ function init()
 						location.push((vertic + j)+ "" + horizon);
 					this.ships.push(new Ship(location,hull[orientation],shipSize,"P"+i));
 				}	
-			}
+			},
+				changePicture: function(picture)
+				{
+					if(document !== undefined)
+					{
+						var pic = document.getElementById(picture);
+						pic.style.backgroundColor = "gray";
+						console.log("hMM");
+					}
+					else
+					console.log("Its for jasmine");
+				}
 	};
 			
 	var kontroler =
@@ -163,16 +176,18 @@ function init()
 		this.hits = 0;
 		this.size = size;
 		this.picture = picture;
+		this.isSunk = false;
 	}
 	
 
 				
-		module.exports =
+		/*module.exports =
 		{
 			kontroler,
 			model,
-			hulsMagazine
-		}	
+			hulsMagazine,
+			Ship
+		}	*/
 		
 		
 			
