@@ -90,3 +90,43 @@ describe("Shot", function()
         expect(battle.model.ships[4].isSunk).toEqual(true); 
     })
 })
+
+describe("shipMaker", function()
+{
+    
+    beforeEach(function()
+    {
+        battle.model.makeShips(10);
+    })
+    afterEach(function()
+    {
+        battle.model.ships = []; 
+    })
+
+    it("makes ships without collisions", function()
+    {
+        function collisions()
+        {
+            var shipsTable = battle.model.ships;
+            for(var i = 0; i<shipsTable.length; i++)
+            {
+                for(var j = 0 ; j< shipsTable[i].position.length; j++)
+                {
+                    console.log(shipsTable[i].position[j]);
+                    var tmp = shipsTable[i].position[j];
+                    for(var k = i+1; k < shipsTable.length; k++)
+                    {
+                        if( shipsTable[k].position.indexOf(tmp)>=0)
+                        {
+                            console.log("Colision on " + tmp + " and " + shipsTable[k].position)
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        expect(collisions()).toEqual(false);
+    })
+})
