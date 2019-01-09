@@ -12,10 +12,12 @@ var document;
 function init()
 {
 	var board = document.getElementsByTagName("td");
+	var counter = document.getElementById("counter");
+	counter.innerHTML = "Your shots: " + kontroler.shots;
 	for(var i = 0; i<board.length; i++)
 		board[i].onclick = kontroler.isNew;
 	model.makeShips(model.boardSize);
-	console.log(model.ships)			
+	//console.log(model.ships)			
 }			
 
 var model =
@@ -23,6 +25,7 @@ var model =
 	boardSize: 10, //later added by user
 	numOfShips: 10, // later by user chose
 	ships: [],
+	shipsLeft: 10,
 	isOccupied: function(newShip)
 	{
 		for(var i = 0; i<this.ships.length; i++)
@@ -34,7 +37,15 @@ var model =
 			}
 		}
 		return false;
-	},	
+	},
+	lostShip: function()
+	{	
+		this.shipsLeft -= 1;
+		if(this.shipsLeft <1)
+		{
+			console.log("End of the game");
+		}
+	},
 	
 	fire: function(cell)
 	{
@@ -51,7 +62,7 @@ var model =
 					{
 						//console.log("Zatopiony");
 						this.changePicture(ship.picture);
-						ship.isSunk = true;
+						this.lostShip();
 					}
 					break;
 			}
@@ -143,9 +154,14 @@ var kontroler =
 		{
 		//console.log("New place shot");
 			kontroler.used.push(cell.id);
-			kontroler.shots +=1;
+			kontroler.countShots();
 			model.fire(cell);
 		}
+	},
+	countShots: function()
+	{
+		kontroler.shots +=1;
+		counter.innerHTML = "Your shots: " + kontroler.shots;
 	}			
 };
 	
@@ -185,7 +201,6 @@ function Ship(position, hull, size, picture)
 	this.hits = 0;
 	this.size = size;
 	this.picture = picture;
-	this.isSunk = false;
 }
 
 if(document == undefined)

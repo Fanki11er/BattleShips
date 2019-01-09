@@ -84,6 +84,20 @@ td:hover
 {
 	background-image: url("../Img/Fire.png");
 }
+
+#counter
+{
+	float: left;
+	width:430px;
+	height: 85px;
+	background-color: purple;
+	margin: 10px 15px 10px 15px;
+	text-align: center;
+	font-size: 55px;
+	font-weight: 700;
+	padding-top: 15px;
+
+}
 #footer
 {
 	clear: both;
