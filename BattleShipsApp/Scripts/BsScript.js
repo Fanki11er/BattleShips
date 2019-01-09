@@ -15,14 +15,27 @@ function init()
 	for(var i = 0; i<board.length; i++)
 		board[i].onclick = kontroler.isNew;
 	model.makeShips(model.boardSize);
-	//console.log(model.ships)			
+	console.log(model.ships)			
 }			
 
 var model =
 {
 	boardSize: 10, //later added by user
 	numOfShips: 10, // later by user chose
-	ships: [],	
+	ships: [],
+	isOccupied: function(newShip)
+	{
+		for(var i = 0; i<this.ships.length; i++)
+		{
+			for(var j = 0; j< this.ships[i].position.length; j++)
+			{
+				if(this.ships[i].position.indexOf(newShip[j])>=0)
+					return true;		
+			}
+		}
+		return false;
+	},	
+	
 	fire: function(cell)
 	{
 		for(var i = 0; i< this.ships.length; i++)
@@ -76,26 +89,30 @@ var model =
 			
 	shipMaker: function(boardSize, shipSize, i)
 	{
-		var location = [];
-		var hull = hulsMagazine.selectHull(shipSize); 							
-		var orientation = Math.floor(Math.random()*2);
-		//console.log(orientation);
-		if(orientation==1)
+		
+		do
 		{
-			var horizon = Math.floor(Math.random()*(boardSize + 1 - shipSize));
-			var vertic = Math.floor(Math.random()*boardSize);
-			for(var j= 0; j<shipSize; j++)
-			location.push(vertic + "" + (horizon + j));
-			this.ships.push(new Ship(location,hull[orientation],shipSize,"P"+i));
-		}
-		else
-		{
-			var horizon = Math.floor(Math.random()*boardSize);
-			var vertic = Math.floor(Math.random()*(boardSize + 1 - shipSize));
-			for(var j= 0; j<shipSize; j++)
-				location.push((vertic + j)+ "" + horizon);
-			this.ships.push(new Ship(location,hull[orientation],shipSize,"P"+i));
-		}	
+			var location = [];
+			var hull = hulsMagazine.selectHull(shipSize); 							
+			var orientation = Math.floor(Math.random()*2);
+			//console.log(orientation);
+			if(orientation==1)
+			{
+				var horizon = Math.floor(Math.random()*(boardSize + 1 - shipSize));
+				var vertic = Math.floor(Math.random()*boardSize);
+				for(var j= 0; j<shipSize; j++)
+				location.push(vertic + "" + (horizon + j));
+			}
+			else
+			{
+				var horizon = Math.floor(Math.random()*boardSize);
+				var vertic = Math.floor(Math.random()*(boardSize + 1 - shipSize));
+				for(var j= 0; j<shipSize; j++)
+					location.push((vertic + j)+ "" + horizon);
+			}
+			
+		} while(this.isOccupied(location))	
+		this.ships.push(new Ship(location,hull[orientation],shipSize,"P"+i));
 	},
 	changePicture: function(picture)
 	{
