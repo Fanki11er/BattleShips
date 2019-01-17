@@ -96,6 +96,7 @@ var model =
 				console.log("Wrong makeShip entry");
 		}
 	},
+
 			
 	shipMaker: function(boardSize, shipSize, i)
 	{
@@ -169,10 +170,10 @@ var controller =
 	
 var hulsMagazine = 
 {
-	hullx4:["url('./Img/hx3r.png')", "url('./Img/hx3m.png')", "url('./Img/hx3m.png')", "url('./Img/hx3f.png')"],
-	hullx3:["url('./Img/hx3r.png')", "url('./Img/hx3m.png')", "url('./Img/hx3f.png')"],
-	hullx2:["url('./Img/hx3r.png')", "url('./Img/hx3f.png')"],
-	hullx1:["url('./Img/hx3r.png')"],
+	hullx4:["url('./Img/hull4r.png')", "url('./Img/hull4rm.png')", "url('./Img/hull4mf.png')", "url('./Img/hull4f.png')"],
+	hullx3:["url('./Img/hull3r.png')", "url('./Img/hull3m.png')", "url('./Img/hull3f.png')"],
+	hullx2:["url('./Img/hull2r.png')", "url('./Img/hull2f.png')"],
+	hullx1:["url('./Img/hull1.png')"],
 	
 	showHit: function(cell, ship)
 	{
@@ -205,7 +206,7 @@ var hulsMagazine =
 				console.log("case 3")
 				cell.style.backgroundImage = ship.hull[hit];
 				cell.style.transform = "rotate(90deg) scaleX(-1)";
-				//cell.style.transform = "scaleX(-1)";
+
 				break;			
 			}
 		}
