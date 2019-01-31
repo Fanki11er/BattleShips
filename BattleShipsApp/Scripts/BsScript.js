@@ -16,8 +16,8 @@ function init()
 	counter.innerHTML = "Your shots: " + controller.shots;
 	for(var i = 0; i<board.length; i++)
 		board[i].onclick = controller.isNew;
-	model.makeShips(model.boardSize);
-	//console.log(model.ships)			
+		model.makeShips(model.boardSize);
+		//console.log(model.ships)			
 }			
 
 var model =
@@ -43,7 +43,7 @@ var model =
 		this.shipsLeft -= 1;
 		if(this.shipsLeft <1)
 		{
-			console.log("End of the game");
+			alert("End of the game");
 		}
 	},
 	
