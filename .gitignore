@@ -3,6 +3,6 @@ package-lock.json
 package.json
 spec/support
 settings.json
-.vscode/launch.json
+.vscode/
 .gitignore
 

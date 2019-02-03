@@ -11,16 +11,16 @@ else
 
 function init()
 {
-	var board = document.getElementsByTagName("td");
-	var counter = document.getElementById("counter");
+	const board = document.getElementsByTagName("td");
+	const counter = document.getElementById("counter");
 	counter.innerHTML = "Your shots: " + controller.shots;
-	for(var i = 0; i<board.length; i++)
+	for(let i = 0; i<board.length; i++)
 		board[i].onclick = controller.isNew;
 		model.makeShips(model.boardSize);
 		//console.log(model.ships)			
 }			
 
-var model =
+const model =
 {
 	boardSize: 10, //later added by user
 	numOfShips: 10, // later by user chose
@@ -28,9 +28,9 @@ var model =
 	shipsLeft: 10,
 	isOccupied: function(newShip)
 	{
-		for(var i = 0; i<this.ships.length; i++)
+		for(let i = 0; i<this.ships.length; i++)
 		{
-			for(var j = 0; j< this.ships[i].position.length; j++)
+			for(let j = 0; j< this.ships[i].position.length; j++)
 			{
 				if(this.ships[i].position.indexOf(newShip[j])>=0)
 					return true;		
@@ -49,9 +49,9 @@ var model =
 	
 	fire: function(cell)
 	{
-		for(var i = 0; i< this.ships.length; i++)
+		for(let i = 0; i< this.ships.length; i++)
 		{
-			var ship = this.ships[i];
+			const ship = this.ships[i];
 			if(ship.position.indexOf(cell.id)>=0)
 			{
 				//console.log("TRAFIONY");
@@ -74,7 +74,7 @@ var model =
 	},
 	makeShips: function(bSize)
 	{
-		for(var i = 0; i< this.numOfShips; i++)
+		for(let i = 0; i< this.numOfShips; i++)
 		{							
 			if(i==0)
 			{
@@ -132,7 +132,7 @@ var model =
 	{
 		if(document != undefined)
 		{
-			var pic = document.getElementById(picture);
+			const pic = document.getElementById(picture);
 			pic.style.backgroundColor = "gray";
 		}
 		else
@@ -142,7 +142,7 @@ var model =
 	}
 };
 			
-var controller =
+const controller =
 {
 	shots:0,
 	used:[],
@@ -203,7 +203,7 @@ var hulsMagazine =
 			}
 			case 3:
 			{
-				console.log("case 3")
+				//console.log("case 3")
 				cell.style.backgroundImage = ship.hull[hit];
 				cell.style.transform = "rotate(90deg) scaleX(-1)";
 
