@@ -49,11 +49,13 @@ const model =
 	
 	fire: function(cell)
 	{
+		cell.setAttribute("class", "");
 		for(let i = 0; i< this.ships.length; i++)
 		{
 			const ship = this.ships[i];
 			if(ship.position.indexOf(cell.id)>=0)
 			{
+				
 				//console.log("TRAFIONY");
 			hulsMagazine.showHit(cell, ship);
 				ship.hits += 1;
@@ -61,7 +63,7 @@ const model =
 				{
 					//console.log("Zatopiony");
 					this.changePicture(ship.picture);
-					this.lostShip();
+					this.lostShip();					
 				}
 				break;
 			}
@@ -69,7 +71,8 @@ const model =
 			{
 				//console.log("PUDŁO");
 			}
-			cell.style.backgroundColor = "gray";
+			cell.style.backgroundColor = "transparent";
+			
 		}
 	},
 	makeShips: function(bSize)
@@ -133,9 +136,10 @@ const model =
 		if(document != undefined)
 		{
 			const pic = document.getElementById(picture);
-			pic.style.backgroundColor = "gray";
+			let myClass = pic.className;
+			pic.setAttribute("class","sunk " + myClass);
 		}
-		else
+		else 
 		{
 			console.log("Its for jasmine");
 		}					
@@ -178,9 +182,11 @@ var hulsMagazine =
 	showHit: function(cell, ship)
 	{
 		var hit = ship.position.indexOf(cell.id);
-		cell.style.backgroundColor = null;
+		//cell.style.backgroundColor = null;
 		//console.log(ship.orientation)
-		switch(ship.orientation)
+		cell.style.backgroundColor = "transparent";
+		cell.setAttribute("class","hited");
+		switch(ship.orientation)	
 		{
 			case 0:
 			{
