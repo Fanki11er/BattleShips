@@ -11,12 +11,12 @@ else
 
 function init()
 {
-	const board = document.getElementsByTagName("td");
+	const board = document.getElementsByTagName("td"); 
 	const counter = document.getElementById("counter");
 	counter.innerHTML = "Your shots: " + controller.shots;
 	for(let i = 0; i<board.length; i++)
 		board[i].onclick = controller.isNew;
-		model.makeShips(model.boardSize);
+		model.makeShips(model.boardSize); 
 		//console.log(model.ships)			
 }			
 
