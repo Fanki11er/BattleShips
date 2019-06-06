@@ -11,8 +11,9 @@ else
 
 function init()
 {
-	const board = document.getElementsByTagName("td"); 
+	const board = document.getElementsByClassName("cell"); 
 	const counter = document.getElementById("counter");
+	
 	counter.innerHTML = "Your shots: " + controller.shots;
 	for(let i = 0; i<board.length; i++)
 		board[i].onclick = controller.isNew;
@@ -43,13 +44,14 @@ const model =
 		this.shipsLeft -= 1;
 		if(this.shipsLeft <1)
 		{
-			alert("End of the game");
+			const splash = document.getElementsByClassName("splash");
+				splash[0].classList.add("show");
 		}
 	},
 	
 	fire: function(cell)
 	{
-		cell.setAttribute("class", "");
+		cell.setAttribute("class", "cell");
 		for(let i = 0; i< this.ships.length; i++)
 		{
 			const ship = this.ships[i];
@@ -185,7 +187,7 @@ var hulsMagazine =
 		//cell.style.backgroundColor = null;
 		//console.log(ship.orientation)
 		cell.style.backgroundColor = "transparent";
-		cell.setAttribute("class","hited");
+		cell.setAttribute("class","hited cell");
 		switch(ship.orientation)	
 		{
 			case 0:
