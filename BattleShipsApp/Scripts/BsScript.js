@@ -45,7 +45,11 @@ const model =
 		if(this.shipsLeft <1)
 		{
 			const splash = document.getElementsByClassName("splash");
+			const reset = document.getElementById("button");
 				splash[0].classList.add("show");
+			reset.onclick = function() {
+				location.reload();
+			}
 		}
 	},
 	
